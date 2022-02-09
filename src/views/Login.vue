@@ -27,7 +27,6 @@ import axios from '@/utils/axios'
 import md5 from 'js-md5'
 import { reactive, ref, toRefs } from 'vue'
 import { sessionSet } from '@/utils'
-import { ElMessage } from 'element-plus'
 export default {
   name: 'Login',
   setup() {

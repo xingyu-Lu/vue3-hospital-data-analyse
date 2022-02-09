@@ -49,9 +49,6 @@
 	} from 'vue'
 	import axios from '@/utils/axios'
 	import {
-		ElMessage
-	} from 'element-plus'
-	import {
 		useRouter,
 		useRoute
 	} from 'vue-router'

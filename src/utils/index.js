@@ -44,4 +44,8 @@ export const pathMap = {
 	change_pwd: '修改密码',
 	role: '角色管理',
 	role_add: '角色管理',
+	
+	// 运营统计
+	billing_income: '开单收入',
+	receive_income: '接单收入',
 }

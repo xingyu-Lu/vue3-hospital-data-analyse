@@ -24,15 +24,15 @@ axios.interceptors.response.use(res => {
 		return Promise.reject(res)
 	}
 
-	if (res.data.status != 200) {
-		console.log(res.response)
+	// if (res.data.status != 200) {
+	// 	console.log(res.response)
 
-		return Promise.reject(res)
-		// if (res.data.resultCode == 419) {
-		//   router.push({ path: '/login' })
-		// }
-		// return Promise.reject(res.data)
-	}
+	// 	return Promise.reject(res)
+	// 	// if (res.data.resultCode == 419) {
+	// 	//   router.push({ path: '/login' })
+	// 	// }
+	// 	// return Promise.reject(res.data)
+	// }
 
 	return res.data
 }, function(error) {

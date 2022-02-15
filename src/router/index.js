@@ -61,6 +61,18 @@ const router = createRouter({
 		name: 'update_log',
 		component: () => import('../views/update_log.vue')
 	},
+	// 开单收入
+	{
+		path: '/billing-income',
+		name: 'billing_income',
+		component: () => import('../views/operate_stat/billing_income/index.vue')
+	},
+	// 接单收入
+	{
+		path: '/receive-income',
+		name: 'receive_income',
+		component: () => import('../views/operate_stat/receive_income/index.vue')
+	},
   ]
 })
 

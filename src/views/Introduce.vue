@@ -21,6 +21,7 @@
 			<li>Vue-Router 4.x</li>
 			<li>Element-Plus（适配全新 Vue 3.x 的 PC 端组件库）</li>
 			<li>axios</li>
+			<li>echarts</li>
 		</ul>
 	</el-card>
 	<!-- <div id="zoom"></div> -->

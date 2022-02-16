@@ -59,7 +59,7 @@
 			const multipleTable = ref(null)
 			const router = useRouter()
 			const state = reactive({
-				date: [new Date(), new Date()],
+				date: [new Date().getFullYear() + '-' + (new Date().getMonth()+1), new Date().getFullYear() + '-' + (new Date().getMonth()+1)],
 				office_name: '口腔科',
 				office_list: [],
 				charge_subclass: '',
@@ -85,8 +85,28 @@
 						data: []
 					},
 					toolbox: {
+						show: true,
+						orient: 'vertical',
+						left: 'right',
+						top: 'center',
 						feature: {
-							saveAsImage: {}
+							mark: {
+								show: true
+							},
+							dataView: {
+								show: true,
+								readOnly: false
+							},
+							magicType: {
+								show: true,
+								type: ['line', 'bar', 'stack']
+							},
+							restore: {
+								show: true
+							},
+							saveAsImage: {
+								show: true
+							}
 						}
 					},
 					grid: {
@@ -170,7 +190,9 @@
 					link.style.display = 'none'
 					link.href = url
 					link.setAttribute('id', 'downloadLink')
-					link.setAttribute('download', state.office_name + '-接收金额.xlsx');
+					let start_date = new Date(state.date[0]).getFullYear() + '/' + (new Date(state.date[0]).getMonth()+1)
+					let end_date = new Date(state.date[1]).getFullYear() + '/' + (new Date(state.date[1]).getMonth()+1)
+					link.setAttribute('download', state.office_name + '-接收金额-' + start_date + '-' + end_date + '.xlsx');
 					document.body.appendChild(link)
 					link.click()
 					

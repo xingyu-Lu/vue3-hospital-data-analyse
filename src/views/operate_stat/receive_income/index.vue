@@ -10,7 +10,7 @@
 				<el-date-picker v-model="date" type="monthrange" range-separator="-" start-placeholder="开始日期"
 					end-placeholder="结束日期">
 				</el-date-picker>
-				<el-input style="width: 200px; margin-top: 20px; margin-right: 10px; margin-left: 10px;"
+				<el-input style="width: 200px; margin-right: 10px; margin-left: 10px;"
 					placeholder="请输入收费项目" v-model="charge_subclass" clearable />
 				<el-button type="primary" @click="handleOption">搜索</el-button>
 				<el-button type="primary" @click="handleExport">导出Excel</el-button>
@@ -28,6 +28,18 @@
 			<el-table-column prop="charge_subclass" label="收费项目" />
 			<el-table-column prop="num" label="数量" />
 			<el-table-column prop="money" label="金额" />
+			<el-table-column prop="sequential" label="环比">
+				<template #default="scope">
+					<span style="color: #F56C6C;" v-if="scope.row.sequential > 0">{{scope.row.sequential}}</span>
+					<span style="color: #67C23A;" v-else>{{scope.row.sequential}}</span>
+				</template>
+			</el-table-column>
+			<el-table-column prop="compare_same" label="同比">
+				<template #default="scope">
+					<span style="color: #F56C6C;" v-if="scope.row.compare_same > 0">{{scope.row.compare_same}}</span>
+					<span style="color: #67C23A;" v-else>{{scope.row.compare_same}}</span>
+				</template>
+			</el-table-column>
 		</el-table>
 	</el-card>
 </template>

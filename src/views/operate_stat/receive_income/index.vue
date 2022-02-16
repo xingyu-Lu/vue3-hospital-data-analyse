@@ -59,7 +59,7 @@
 			const multipleTable = ref(null)
 			const router = useRouter()
 			const state = reactive({
-				date: [new Date().getFullYear() + '-' + (new Date().getMonth()+1), new Date().getFullYear() + '-' + (new Date().getMonth()+1)],
+				date: [new Date().getFullYear() + '-' + new Date().getMonth(), new Date().getFullYear() + '-' + (new Date().getMonth()+1)],
 				office_name: '口腔科',
 				office_list: [],
 				charge_subclass: '',

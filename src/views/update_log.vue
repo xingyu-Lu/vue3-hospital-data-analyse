@@ -11,7 +11,7 @@
 
 	<h3>后台代码仓库：<el-link type="primary" :underline="false" target="_blank" href="https://github.com/xingyu-Lu/vue3-hospital-data-analyse">https://github.com/xingyu-Lu/vue3-hospital-data-analyse</el-link></h3>
 	<h3>api代码仓库：<el-link type="primary" :underline="false" target="_blank" href="https://github.com/xingyu-Lu/hospital_data_analyse_api">https://github.com/xingyu-Lu/hospital_data_analyse_api</el-link></h3>
-	<!-- <h3>更新记录</h3>
+	<h3>更新记录</h3>
 
 	<div class="block">
 		<el-timeline>
@@ -19,7 +19,7 @@
 				{{ activity.content }}
 			</el-timeline-item>
 		</el-timeline>
-	</div> -->
+	</div>
 </template>
 
 <script>

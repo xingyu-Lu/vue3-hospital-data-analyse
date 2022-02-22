@@ -10,25 +10,35 @@
 				<el-date-picker v-model="date" type="monthrange" range-separator="-" start-placeholder="开始日期"
 					end-placeholder="结束日期">
 				</el-date-picker>
-				<el-input style="width: 200px; margin-right: 10px; margin-left: 10px;"
-					placeholder="请输入收费项目" v-model="charge_subclass" clearable />
-				<el-button type="primary" @click="handleOption">搜索</el-button>
+				<!-- <el-input style="width: 200px; margin-right: 10px; margin-left: 10px;"
+					placeholder="请输入收费项目" v-model="charge_subclass" clearable /> -->
+				<el-button type="primary" @click="handleOption" style="margin-left: 10px;">搜索</el-button>
 				<el-button type="primary" @click="handleExport">导出Excel</el-button>
 			</div>
 		</template>
+		
+		<h1 style="text-align: center; margin-bottom: 40px;">{{ head }}</h1>
 
 		<div id="zoom"></div>
+		
+		<div id="zoom_pie"></div>
 
 		<el-table v-loading="loading" :data="tableData" stripe style="width: 100%">
-			<!-- <el-table-column prop="year" label="年" /> -->
-			<!-- <el-table-column prop="month" label="月" /> -->
 			<el-table-column prop="date" label="日期" />
-			<el-table-column prop="receive_dep" label="接单科室" />
-			<el-table-column prop="patient_dep" label="病人科室" />
-			<el-table-column prop="charge_subclass" label="收费项目" />
-			<el-table-column prop="num" label="数量" />
-			<el-table-column prop="money" label="金额" />
-			<el-table-column prop="sequential" label="环比">
+			<!-- <el-table-column prop="receive_dep" label="接单科室" />
+			<el-table-column prop="patient_dep" label="病人科室" /> -->
+			<el-table-column prop="pathology_income" label="病理学诊断收入" />
+			<el-table-column prop="material_income" label="材料费收入" />
+			<el-table-column prop="ultrasound_income" label="超声检查收入" />
+			<el-table-column prop="radiation_income" label="放射检查收入" />
+			<el-table-column prop="check_income" label="检查费收入" />
+			<el-table-column prop="checkout_income" label="检验收入" />
+			<el-table-column prop="surgery_income" label="手术项目收入" />
+			<el-table-column prop="xiyao_income" label="西药费收入" />
+			<el-table-column prop="general_medical_income" label="一般医疗服务收入" />
+			<el-table-column prop="zhongyao_income" label="中药收入" />
+			<el-table-column prop="total_money" label="总金额" />
+			<!-- <el-table-column prop="sequential" label="环比">
 				<template #default="scope">
 					<span style="color: #F56C6C;" v-if="scope.row.sequential > 0">{{scope.row.sequential}}</span>
 					<span style="color: #67C23A;" v-else>{{scope.row.sequential}}</span>
@@ -39,7 +49,7 @@
 					<span style="color: #F56C6C;" v-if="scope.row.compare_same > 0">{{scope.row.compare_same}}</span>
 					<span style="color: #67C23A;" v-else>{{scope.row.compare_same}}</span>
 				</template>
-			</el-table-column>
+			</el-table-column> -->
 		</el-table>
 	</el-card>
 </template>
@@ -64,6 +74,7 @@
 	import * as echarts from 'echarts';
 
 	let myChart = null
+	let myChartPie = null
 	export default {
 		name: 'admin-list',
 		setup() {
@@ -78,6 +89,7 @@
 				loading: false,
 				tableData: [], // 数据列表
 				multipleSelection: [], // 选中项
+				head: '',
 
 				// 图标配置项和数据
 				option: {
@@ -100,22 +112,22 @@
 						show: true,
 						orient: 'vertical',
 						left: 'right',
-						top: 'center',
+						// top: 'center',
 						feature: {
-							mark: {
-								show: true
-							},
-							dataView: {
-								show: true,
-								readOnly: false
-							},
-							magicType: {
-								show: true,
-								type: ['line', 'bar', 'stack']
-							},
-							restore: {
-								show: true
-							},
+							// mark: {
+							// 	show: true
+							// },
+							// dataView: {
+							// 	show: true,
+							// 	readOnly: false
+							// },
+							// magicType: {
+							// 	show: true,
+							// 	type: ['line', 'bar', 'stack']
+							// },
+							// restore: {
+							// 	show: true
+							// },
 							saveAsImage: {
 								show: true
 							}
@@ -129,13 +141,113 @@
 					},
 					xAxis: [{
 						type: 'category',
-						boundaryGap: true,
+						// boundaryGap: true,
 						data: []
 					}],
 					yAxis: [{
 						type: 'value'
 					}],
-					series: []
+					series: [{
+						name: 'Email',
+						type: 'line',
+						stack: 'Total',
+						label: {
+							show: true,
+							position: 'top'
+						},
+						smooth: true,
+						areaStyle: {},
+						emphasis: {
+							focus: 'series'
+						},
+						data: [120, 132, 101, 134, 90, 230, 210]
+					}]
+				},
+				
+				// 饼图
+				option_pie: {
+					tooltip: {
+						trigger: 'item',
+						formatter: '{a} <br/>{b}: {c} ({d}%)'
+					},
+					toolbox: {
+						show: true,
+						orient: 'vertical',
+						left: 'right',
+						// top: 'center',
+						feature: {
+							saveAsImage: {
+								show: true
+							}
+						}
+					},
+					legend: {
+						data: [
+							'Direct',
+							'Marketing',
+							'Search Engine',
+						]
+					},
+					series: [{
+						name: '接单收入',
+						type: 'pie',
+						selectedMode: 'single',
+						radius: [0, '60%'],
+						label: {
+							// position: 'inner',
+							// fontSize: 14
+							show: true,
+							formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+							backgroundColor: '#F6F8FC',
+							borderColor: '#8C8D8E',
+							borderWidth: 1,
+							borderRadius: 4,
+							rich: {
+								a: {
+									color: '#6E7079',
+									lineHeight: 22,
+									align: 'center'
+								},
+								hr: {
+									borderColor: '#8C8D8E',
+									width: '100%',
+									borderWidth: 1,
+									height: 0
+								},
+								b: {
+									color: '#4C5058',
+									fontSize: 14,
+									fontWeight: 'bold',
+									lineHeight: 33
+								},
+								per: {
+									color: '#fff',
+									backgroundColor: '#4C5058',
+									padding: [3, 4],
+									borderRadius: 4
+								}
+							}
+				
+						},
+						labelLine: {
+							// show: false
+							length: 30
+						},
+						data: [{
+								value: 1548,
+								name: 'Search Engine'
+							},
+							{
+								value: 775,
+								name: 'Direct'
+							},
+							{
+								value: 679,
+								name: 'Marketing',
+								selected: true
+							}
+						]
+					}]
 				}
 			})
 			onMounted(() => {
@@ -144,6 +256,7 @@
 
 				// 基于准备好的dom，初始化echarts实例
 				myChart = echarts.init(document.getElementById('zoom'))
+				myChartPie = echarts.init(document.getElementById('zoom_pie'))
 
 				// 使用刚指定的配置项和数据显示图表。
 				// myChart.setOption(state.option)
@@ -151,6 +264,7 @@
 
 			onUnmounted(() => {
 				myChart.dispose()
+				myChartPie.dispose()
 			})
 
 			const getBillingIncome = () => {
@@ -158,19 +272,28 @@
 				axios.get('/api/back/receiveincomes', {
 					params: {
 						office_name: state.office_name,
-						charge_subclass: state.charge_subclass,
 						date: state.date,
 					}
 				}).then(res => {
-					myChart.dispose()
-					myChart = echarts.init(document.getElementById('zoom'))
+					state.head = res.data.head
 					state.tableData = res.data.data
 					state.loading = false
-					state.option.title.text = res.data.title
-					state.option.legend.data = res.data.legend_arr
-					state.option.xAxis[0].data = res.data.date_arr
-					state.option.series = res.data.series_arr
+					
+					myChart.dispose()
+					myChart = echarts.init(document.getElementById('zoom'))
+					// state.option.title.text = res.data.title
+					state.option.legend.data = res.data.line_chart.legend_data
+					state.option.xAxis[0].data = res.data.line_chart.series_date
+					state.option.series[0].name = res.data.line_chart.series_name
+					state.option.series[0].data = res.data.line_chart.series_data
 					myChart.setOption(state.option)
+					
+					// 饼图
+					myChartPie.dispose()
+					myChartPie = echarts.init(document.getElementById('zoom_pie'))
+					state.option_pie.legend.data = res.data.pie_chart.legend_data
+					state.option_pie.series[0].data = res.data.pie_chart.series_data
+					myChartPie.setOption(state.option_pie)
 				})
 			}
 
@@ -204,7 +327,7 @@
 					link.setAttribute('id', 'downloadLink')
 					let start_date = new Date(state.date[0]).getFullYear() + '/' + (new Date(state.date[0]).getMonth()+1)
 					let end_date = new Date(state.date[1]).getFullYear() + '/' + (new Date(state.date[1]).getMonth()+1)
-					link.setAttribute('download', state.office_name + '-接收金额-' + start_date + '-' + end_date + '.xlsx');
+					link.setAttribute('download', state.office_name + '-接收收入-' + start_date + '-' + end_date + '.xlsx');
 					document.body.appendChild(link)
 					link.click()
 					
@@ -227,6 +350,11 @@
 <style scoped>
 	#zoom {
 		min-height: 400px;
+		margin-bottom: 20px;
+	}
+	
+	#zoom_pie {
+		min-height: 600px;
 		margin-bottom: 20px;
 	}
 </style>

@@ -73,6 +73,12 @@ const router = createRouter({
 		name: 'receive_income',
 		component: () => import('../views/operate_stat/receive_income/index.vue')
 	},
+	// 支出明细
+	{
+		path: '/pay',
+		name: 'pay',
+		component: () => import('../views/operate_stat/pay/index.vue')
+	},
   ]
 })
 

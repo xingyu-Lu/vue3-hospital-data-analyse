@@ -63,10 +63,16 @@
 		useRouter,
 		useRoute
 	} from 'vue-router'
+	import { sessionGet } from '@/utils'
 	import * as echarts from 'echarts';
 
 	let myChart = null
 	let myChartPie = null
+	let office_name = sessionGet('userinfo')['name']
+	if (office_name == 'root') {
+		office_name = '口腔科'
+	}
+	
 	export default {
 		// name: 'admin-list',
 		setup() {
@@ -76,7 +82,7 @@
 			const state = reactive({
 				date: [new Date().getFullYear() + '-' + new Date().getMonth(), new Date().getFullYear() + '-' + (
 					new Date().getMonth() + 1)],
-				office_name: '口腔科',
+				office_name: office_name,
 				office_list: [],
 				charge_subclass: '',
 				loading: false,
@@ -346,7 +352,7 @@
 						.getMonth() + 1)
 					let end_date = new Date(state.date[1]).getFullYear() + '/' + (new Date(state.date[1])
 						.getMonth() + 1)
-					link.setAttribute('download', state.office_name + '-支出-' + start_date + '-' + end_date +
+					link.setAttribute('download', state.office_name + '-支出明细-' + start_date + '-' + end_date +
 						'.xlsx');
 					document.body.appendChild(link)
 					link.click()

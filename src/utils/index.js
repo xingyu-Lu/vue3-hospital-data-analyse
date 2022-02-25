@@ -49,4 +49,5 @@ export const pathMap = {
 	billing_income: '开单收入',
 	receive_income: '接单收入',
 	pay: '支出明细',
+	indicator: '重点指标',
 }

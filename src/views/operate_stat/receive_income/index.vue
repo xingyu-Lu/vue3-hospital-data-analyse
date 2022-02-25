@@ -71,10 +71,16 @@
 		useRouter,
 		useRoute
 	} from 'vue-router'
+	import { sessionGet } from '@/utils'
 	import * as echarts from 'echarts';
 
 	let myChart = null
 	let myChartPie = null
+	let office_name = sessionGet('userinfo')['name']
+	if (office_name == 'root') {
+		office_name = '口腔科'
+	}
+	
 	export default {
 		name: 'admin-list',
 		setup() {
@@ -83,7 +89,7 @@
 			const router = useRouter()
 			const state = reactive({
 				date: [new Date().getFullYear() + '-' + new Date().getMonth(), new Date().getFullYear() + '-' + (new Date().getMonth()+1)],
-				office_name: '口腔科',
+				office_name: office_name,
 				office_list: [],
 				charge_subclass: '',
 				loading: false,

@@ -79,6 +79,12 @@ const router = createRouter({
 		name: 'pay',
 		component: () => import('../views/operate_stat/pay/index.vue')
 	},
+	// 重点指标
+	{
+		path: '/indicator',
+		name: 'indicator',
+		component: () => import('../views/operate_stat/indicator/index.vue')
+	},
   ]
 })
 

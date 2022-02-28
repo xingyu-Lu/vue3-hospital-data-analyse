@@ -50,4 +50,5 @@ export const pathMap = {
 	receive_income: '接单收入',
 	pay: '支出明细',
 	indicator: '重点指标',
+	cost_control: '成本控制',
 }

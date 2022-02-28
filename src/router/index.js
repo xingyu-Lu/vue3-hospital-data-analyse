@@ -85,6 +85,12 @@ const router = createRouter({
 		name: 'indicator',
 		component: () => import('../views/operate_stat/indicator/index.vue')
 	},
+	// 成本控制
+	{
+		path: '/cost-control',
+		name: 'cost_control',
+		component: () => import('../views/operate_stat/cost_control/index.vue')
+	},
   ]
 })
 

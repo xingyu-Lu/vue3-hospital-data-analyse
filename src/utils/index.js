@@ -51,4 +51,5 @@ export const pathMap = {
 	pay: '支出明细',
 	indicator: '重点指标',
 	cost_control: '成本控制',
+	billing_rank: '开单排名',
 }

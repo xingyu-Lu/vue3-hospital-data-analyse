@@ -91,6 +91,12 @@ const router = createRouter({
 		name: 'cost_control',
 		component: () => import('../views/operate_stat/cost_control/index.vue')
 	},
+	// 开单排名
+	{
+		path: '/billing-rank',
+		name: 'billing_rank',
+		component: () => import('../views/operate_stat/billing_rank/index.vue')
+	},
   ]
 })
 

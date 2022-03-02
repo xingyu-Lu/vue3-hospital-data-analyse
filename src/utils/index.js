@@ -52,4 +52,5 @@ export const pathMap = {
 	indicator: '重点指标',
 	cost_control: '成本控制',
 	billing_rank: '开单排名',
+	receive_rank: '接单排名',
 }

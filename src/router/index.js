@@ -97,6 +97,12 @@ const router = createRouter({
 		name: 'billing_rank',
 		component: () => import('../views/operate_stat/billing_rank/index.vue')
 	},
+	// 接单排名
+	{
+		path: '/receive-rank',
+		name: 'receive_rank',
+		component: () => import('../views/operate_stat/receive_rank/index.vue')
+	},
   ]
 })
 

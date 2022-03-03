@@ -17,18 +17,18 @@
 		
 		<el-table v-loading="loading" :data="tableData" stripe style="width: 100%">
 			<el-table-column prop="date" label="日期" />
-			<el-table-column prop="billing_income" label="开单收入" />
-			<el-table-column prop="direct_cost" label="直接成本" />
-			<el-table-column prop="balance" label="收支结余" />
+			<el-table-column prop="billing_income" label="开单收入(元)" />
+			<el-table-column prop="direct_cost" label="直接成本(元)" />
+			<el-table-column prop="balance" label="收支结余(元)" />
 			<el-table-column prop="balance_rate" label="结余率" />
-			<el-table-column prop="drug_income" label="药品收入" />
-			<el-table-column prop="consumable_income" label="耗材收入" />
-			<el-table-column prop="drug_pay" label="药品支出" />
-			<el-table-column prop="consumable_pay" label="耗材支出" />
+			<el-table-column prop="drug_income" label="药品收入(元)" />
+			<el-table-column prop="consumable_income" label="耗材收入(元)" />
+			<el-table-column prop="drug_pay" label="药品支出(元)" />
+			<el-table-column prop="consumable_pay" label="耗材支出(元)" />
 			<el-table-column prop="drug_rate" label="药占比" />
 			<el-table-column prop="consumable_rate" label="耗占比" />
-			<el-table-column prop="drug_profit" label="药品利润" />
-			<el-table-column prop="consumable_profit" label="耗材利润" />
+			<el-table-column prop="drug_profit" label="药品利润(元)" />
+			<el-table-column prop="consumable_profit" label="耗材利润(元)" />
 		</el-table>
 	</el-card>
 </template>

@@ -27,17 +27,17 @@
 			<el-table-column prop="date" label="日期" />
 			<!-- <el-table-column prop="billing_dep" label="开单科室" /> -->
 			<!-- <el-table-column prop="patient_dep" label="病人科室" /> -->
-			<el-table-column prop="pathology_income" label="病理学诊断收入" />
-			<el-table-column prop="material_income" label="材料费收入" />
-			<el-table-column prop="ultrasound_income" label="超声检查收入" />
-			<el-table-column prop="radiation_income" label="放射检查收入" />
-			<el-table-column prop="check_income" label="检查费收入" />
-			<el-table-column prop="checkout_income" label="检验收入" />
-			<el-table-column prop="surgery_income" label="手术项目收入" />
-			<el-table-column prop="xiyao_income" label="西药费收入" />
-			<el-table-column prop="general_medical_income" label="一般医疗服务收入" />
-			<el-table-column prop="zhongyao_income" label="中药收入" />
-			<el-table-column prop="total_money" label="总金额" />
+			<el-table-column prop="pathology_income" label="病理学诊断收入(元)" />
+			<el-table-column prop="material_income" label="材料费收入(元)" />
+			<el-table-column prop="ultrasound_income" label="超声检查收入(元)" />
+			<el-table-column prop="radiation_income" label="放射检查收入(元)" />
+			<el-table-column prop="check_income" label="检查费收入(元)" />
+			<el-table-column prop="checkout_income" label="检验收入(元)" />
+			<el-table-column prop="surgery_income" label="手术项目收入(元)" />
+			<el-table-column prop="xiyao_income" label="西药费收入(元)" />
+			<el-table-column prop="general_medical_income" label="一般医疗服务收入(元)" />
+			<el-table-column prop="zhongyao_income" label="中药收入(元)" />
+			<el-table-column prop="total_money" label="总金额(元)" />
 			<!-- <el-table-column prop="sequential" label="环比">
 				<template #default="scope">
 					<span style="color: #F56C6C;" v-if="scope.row.sequential > 0">{{scope.row.sequential}}</span>

@@ -25,12 +25,12 @@
 
 		<el-table v-loading="loading" :data="tableData" stripe style="width: 100%">
 			<el-table-column prop="date" label="日期" />
-			<el-table-column prop="personnel_pay" label="人员经费" />
-			<el-table-column prop="fixed_asset_pay" label="固定资产折旧费" />
-			<el-table-column prop="material_pay" label="卫生材料费" />
-			<el-table-column prop="medicine_pay" label="药品费" />
-			<el-table-column prop="other_pay" label="其他费用" />
-			<el-table-column prop="total_money" label="总金额" />
+			<el-table-column prop="personnel_pay" label="人员经费(元)" />
+			<el-table-column prop="fixed_asset_pay" label="固定资产折旧费(元)" />
+			<el-table-column prop="material_pay" label="卫生材料费(元)" />
+			<el-table-column prop="medicine_pay" label="药品费(元)" />
+			<el-table-column prop="other_pay" label="其他费用(元)" />
+			<el-table-column prop="total_money" label="总金额(元)" />
 			<!-- <el-table-column prop="sequential" label="环比">
 				<template #default="scope">
 					<span style="color: #F56C6C;" v-if="scope.row.sequential > 0">{{scope.row.sequential}}</span>

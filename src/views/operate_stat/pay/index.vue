@@ -7,7 +7,7 @@
 					<el-option v-for="item in office_list" :key="item.id" :label="item.value" :value="item.value">
 					</el-option>
 				</el-select>
-				<el-date-picker v-model="date" type="monthrange" range-separator="-" start-placeholder="开始日期"
+				<el-date-picker v-model="date" type="monthrange" range-separator="至" start-placeholder="开始日期"
 					end-placeholder="结束日期">
 				</el-date-picker>
 				<!-- <el-input style="width: 200px; margin-top: 20px; margin-right: 10px; margin-left: 10px;"

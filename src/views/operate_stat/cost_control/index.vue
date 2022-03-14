@@ -63,7 +63,7 @@
 			const multipleTable = ref(null)
 			const router = useRouter()
 			const state = reactive({
-				date: [new Date().getFullYear() + '-' + new Date().getMonth(), new Date().getFullYear() + '-' + (
+				date: [new Date().getFullYear() + '-' + 1, new Date().getFullYear() + '-' + (
 					new Date().getMonth() + 1)],
 				office_name: office_name,
 				office_list: [],

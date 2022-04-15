@@ -11,6 +11,7 @@ import {
 
 const baseUrl = {
 	development: './',
+	test: './',
 	production: './',
 }
 
